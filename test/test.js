@@ -2,6 +2,7 @@ module.exports = {
 
 	'Test for local host': function (test){
 		test
+			.wait(2000)
 			.open('http://localhost:8080')
 			.assert.title().is('Welcome','title is right')
 			.wait(1000)

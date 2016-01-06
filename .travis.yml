@@ -1,11 +1,18 @@
-language:node_js
-node_js:
+language : node_js
+node_js :
   - "0.10.25"
-sudo:required
-before install:
-  - sudo apt-get update -qq
-  - sudo apt-get install npm
-  - sudo npm install -g node-gyp
+sudo :
+  required
+dist :
+  trusty
+before_install :
+  - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+  - echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+  - sudo apt-get -y update -qq
+  - sudo apt-get -y install npm
+  - sudo apt-get install -y mongodb-org
+  - sudo npm install -y -g node-gyp
   - npm install
   - sudo npm install dalek-cli -g
-  - npm install dalekjs --save-dev
+  - npm start & dalek test/test.js  
+  - npm start & dalek test/test_signup.js

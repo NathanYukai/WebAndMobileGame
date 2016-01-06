@@ -2,6 +2,7 @@ module.exports = {
 
 	'Testing signup error checking, for local host': function (test){
 		test
+			.wait(2000)
 			.open('http://localhost:8080')
 			.wait(1000)
 			.assert.title().is('Welcome','title is right')
@@ -41,7 +42,8 @@ module.exports = {
      		.type('#signup_pss', 'ps')
      		.type('#signup_pssconf', 'ps')
      		.click('#signup_signup')
-     		.screenshot('screenshots/signup/register with short password.png')
+     		.wait(1000)
+		.screenshot('screenshots/signup/register with short password.png')
      		.assert.exists('#signup_signup','fails register, redirect to sign up again')
 
 
